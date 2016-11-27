@@ -47,7 +47,7 @@ public class robot {
 	private static String station11 = "station11";
 	private static String station12 = "station12";
 	private static String station14 = "station14";
-	private static int[] a = new int[8];
+	private static int[] a = new int[80];
 	private static String currentpos0 = "pick up station";
 	private static String currentpos1 = "12 & 14";
 	private static String currentpos2 = "1 & 2";
@@ -245,11 +245,14 @@ public class robot {
 				if(currentpos == 1) {
 				System.out.println("The robot turned right towards station 12 used for immediate deliveries");;
 				PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("Station12")));
-					for(Integer i : odd) {
-					//for(int i = 0; i < 3; i++) {
-						pw.println(i + " has been placed into this station.");
-						pw.flush();
-						System.out.println(i + " has been placed into this station.");
+					//for(Integer i : odd) {
+					for(int i = 0; i < 4; i++) {
+						String str = odd.get(i).toString();
+						pw.write(str + "\n");
+						//pw.println(i + " has been placed into this station.");
+						//pw.flush();
+						System.out.println(odd.get(i) + " has been placed into this station"
+								+ ", ready for immediate delivery.");
 					
 					}
 				delievered = true;
@@ -257,56 +260,140 @@ public class robot {
 				}
 				else if(currentpos == 2) {
 					System.out.println("The robot turned right towards station 1");
+					PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("Station1")));
+					for(int i = 4; i < 8; i++) {
+						String str = odd.get(i).toString();
+						pw.write(str + "\n");
+						System.out.println(odd.get(i) + " has been placed into this station.");
 					
+					}
 					delievered = true;
+					pw.close();
 					}
 				else if(currentpos == 3) {
 					System.out.println("The robot turned right towards station 3");
+					PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("Station3")));
+					for(int i = 8; i < 16; i++) {
+						String str = odd.get(i).toString();
+						pw.write(str + "\n");
+						System.out.println(odd.get(i) + " has been placed into this station.");
+					
+					}
 					delievered = true;
+					pw.close();
 					}
 				else if(currentpos == 4) {
 					System.out.println("The robot turned right towards station 5 used for serials with 5");
+					PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("Station5")));
+					for(int i = 0; i < 8; i++) { //change this to MSB so redo the loop i = 0
+						String str = MSB.get(i).toString();
+						pw.write(str + "\n");
+						System.out.println(MSB.get(i) + " has been placed into this station.");
+					}
 					delievered = true;
+					pw.close();
 					//create unload method to have robot deliver to refrigation container
 					}
 				else if(currentpos == 5) {
-					System.out.println("The robot turned right towards station 7 used for items less than 50kg");
+					System.out.println("The robot turned right towards station 7 "
+							+ "used for items less than 50kg");
+					PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("Station7")));
+					for(int i = 16; i < 24; i++) {
+						String str = odd.get(i).toString();
+						pw.write(str + "\n");
+						System.out.println(odd.get(i) + " has been placed into this station. "
+								+ "Packages meet the weight requirement of less than 50kg");
+					}
 					delievered = true;
+					pw.close();
 					}
 				else if(currentpos == 6) {
-					System.out.println("The robot turned right towards station 9 used for special deliveries");
+					System.out.println("The robot turned right towards station 9 "
+							+ "used for special deliveries");
+					PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("Station9")));
+					for(int i = 32; i < 40; i++) {
+						String str = odd.get(i).toString();
+						pw.write(str + "\n");
+						System.out.println(odd.get(i) + " has been placed into this station, "
+								+ "ready for special delivery.");
+					}
 					delievered = true;
+					pw.close();
 					}
 			} //Write that robot is going to drop off a package, insert method to write to the station text file
 	}
-	public void moveLeft() { //even number serials
+	public void moveLeft() throws IOException { //even number serials
 		boolean delievered = false;
 		if(currentpos > 6 || currentpos < 1)
 			System.out.println("You entered a station number that is out of bounds");
 			while(delievered == false) {
 				if(currentpos == 1) {
-				System.out.println("The robot turned right towards station 14 used for 5 day storage");
+				System.out.println("The robot turned right towards station 14 "
+						+ "used for 5 day storage");
+				PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("Station14")));
+				for(int i = 0; i < 4; i++) {
+					String str = even.get(i).toString();
+					pw.write(str + "\n");
+					System.out.println(even.get(i) + " has been placed for storage of 5 days.");
+				}
 				delievered = true;
+				pw.close();
 				}
 				else if(currentpos == 2) {
 					System.out.println("The robot turned right towards station 2");
+					PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("Station2")));
+					for(int i = 4; i < 8; i++) {
+						String str = even.get(i).toString();
+						pw.write(str + "\n");
+						System.out.println(even.get(i) + " has been placed into this station.");
+					}
 					delievered = true;
+					pw.close();
 					}
 				else if(currentpos == 3) {
 					System.out.println("The robot turned right towards station 4");
+					PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("Station4")));
+					for(int i = 8; i < 16; i++) {
+						String str = even.get(i).toString();
+						pw.write(str + "\n");
+						System.out.println(even.get(i) + " has been placed into this station.");
+					}
 					delievered = true;
+					pw.close();
 					}
 				else if(currentpos == 4) {
 					System.out.println("The robot turned right towards station 6");
+					PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("Station6")));
+					for(int i = 16; i < 24; i++) {
+						String str = even.get(i).toString();
+						pw.write(str + "\n");
+						System.out.println(even.get(i) + " has been placed into this station.");
+					}
 					delievered = true;
+					pw.close();
 					}
 				else if(currentpos == 5) {
 					System.out.println("The robot turned right towards station 8");
+					PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("Station8")));
+					for(int i = 24; i < 32; i++) {
+						String str = even.get(i).toString();
+						pw.write(str + "\n");
+						System.out.println(even.get(i) + " has been placed into this station.");
+					}
 					delievered = true;
+					pw.close();
 					}
 				else if(currentpos == 6) {
 					System.out.println("The robot turned right towards station 10 used for special deliveries");
+					PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("Station10")));
+					for(int i = 32; i < 40; i++) {
+						String str = even.get(i).toString();
+						pw.write(str + "\n");
+						System.out.println(even.get(i) + " has been placed into this station,"
+								+ "ready for special delivery.");
+					}
 					delievered = true;
+					pw.close();
 					}
 			} //Write that robot is going to drop off a package, insert method to write to the station text file
 	}
@@ -314,20 +401,59 @@ public class robot {
 	public static void main(String[] args) throws IOException { 
 
 		readFile(filename); //Read from the master list and places into []a
-		displayArray(a);	//Display master list from array
+		//displayArray(a);	//Display master list from array
 		
-		
-		System.out.println("even sorted list"); 
 		classify();
-        displaySortedList(even);
+		checkMSB(a);
+		System.out.println("even sorted list"); 
+       // displaySortedList(even);
         System.out.println("odd sorted list");
-        displaySortedList(odd);  
+       // displaySortedList(odd);  
         
         robot rob = new robot();
-        rob.moveForwards(1);
-        rob.moveRight();
-	
+        rob.moveForwards(1); //Move towards station 12 & 14
+        rob.moveRight();     //Turn to station 12
+        rob.moveBackwards(0);
+        rob.moveForwards(1); //Move towards station 12 & 14
+        rob.moveLeft();      //Turn to station 14
+        rob.moveBackwards(0);
+        
+        rob.moveForwards(2); //Move towards station 1 & 2
+        rob.moveRight();     //Turn towards station 1
+        rob.moveBackwards(0);
+        rob.moveForwards(2); //Move towards station 1 & 2
+        rob.moveLeft();		 //Turn towards station 2
+        rob.moveBackwards(0);
+        
+        rob.moveForwards(3); //Move towards station 3 & 4
+        rob.moveRight();     //Turn towards station 3
+        rob.moveBackwards(0);
+        rob.moveForwards(3); //Move towards station 3 & 4
+        rob.moveLeft();		 //Turn towards station 4
+        rob.moveBackwards(0);
 		
+        rob.moveForwards(4); //Move towards station 5 & 6
+        rob.moveRight();     //Turn towards station 5
+        rob.moveBackwards(0);
+        rob.moveForwards(4); //Move towards station 5 & 6
+        rob.moveLeft();		 //Turn towards station 6
+        rob.moveBackwards(0);
+        
+        rob.moveForwards(5); //Move towards station 7 & 8
+        rob.moveRight();     //Turn towards station 7
+        rob.moveBackwards(0);
+        rob.moveForwards(5); //Move towards station 7 & 8
+        rob.moveLeft();		 //Turn towards station 8
+        rob.moveBackwards(0);
+        
+        rob.moveForwards(6); //Move towards station 9 & 10
+        rob.moveRight();     //Turn towards station 9
+        rob.moveBackwards(0);
+        rob.moveForwards(6); //Move towards station 9 & 10
+        rob.moveLeft();		 //Turn towards station 10
+        rob.moveBackwards(0);
+        
+        rob.moveForwards(7); 
 
 	}
 }
